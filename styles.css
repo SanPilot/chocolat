@@ -1,0 +1,29 @@
+/* Styles for interface */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.controls {
+  background-color: grey;
+}
+
+.header {
+  display: block;
+  font-family: Monospace;
+  font-size: 30pt;
+  font-weight: bold;
+}
+
+.results {
+  background-color: red;
+}
