@@ -111,7 +111,7 @@ window.onload = () => {
       if(!e.data.done) {
         if(e.data.percentage > 0) {
           if(e.data.percentage < 99) {
-            $("results").innerHTML = '<div class="status">Simulating... (' + Math.round(e.data.percentage) + '% done).';
+            $("results").innerHTML = '<div class="status">Simulating... (' + Math.round(e.data.percentage) + '% done)';
             $("results").innerHTML += '<progress value="' + e.data.percentage + '" max="100"></progress></div>';
           } else {
             $("results").innerHTML = '<div class="status">Sorting results.';
