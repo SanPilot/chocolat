@@ -47,13 +47,19 @@ window.onload = () => {
 
   // Begin the simulation when the button is pressed
   var simulate = () => {
-    $("results").className = 'results';
 
     // Pre-flight: ensure are values are valid
     var players = [], range = {
       min: +$("range-min").value,
       max: +$("range-max").value
     };
+
+    // If the simulation may take a long time, warn the user
+    if(range.max - range.min >= 20000) {
+      if(!confirm("The simulation you have selected may take a long time to complete.\nRun the simulation anyways?")) return;
+    }
+
+    $("results").className = 'results';
 
     if(range.min >= range.max) {
       $("results").innerHTML = '<span class="status error">The provided range is invalid.</span>';
@@ -82,11 +88,6 @@ window.onload = () => {
     if(!window.Worker) {
       $("results").innerHTML = '<span class="status error">This simulation is not supported on your system!</span>';
       return;
-    }
-
-    // If the simulation may take a long time, warn the user
-    if(range.max - range.min >= 20000) {
-      if(!confirm("The simulation you have selected may take a long time to complete.\nRun the simulation anyways?")) return;
     }
 
     // Everything checks out, start the simulation!
