@@ -3,23 +3,52 @@
 
 <head>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js"></script>
+  <script src="frontend.js" type="text/javascript"></script>
   <title>Chocolat</title>
 </head>
 
 <body>
-  
+
   <div class="container">
     <div class="controls">
       <span class="header">Chocolat</span>
-      <span class="subheader">Statistical simulation</span>
-    </div>
-    
-    <div class="results">
-      TU ES FAG
-    </div>
-    
-  </div>
-</body>
+      <span class="subheader desc">Statistical simulation</span>
+      <span class="subheader author">By Hussain Khalil</span>
 
+      <div class="settings">
+        <span class="settings-header">Settings</span>
+
+        <div class="settings-section">
+          <span class="settings-section-header"><label for="range-min">Range</label></span>
+          <input class="settings-input" id="range-min" type="number" value="0"> to <input class="settings-input" id="range-max" type="number" value="1000">
+        </div>
+
+        <div class="settings-section">
+          <span class="settings-section-header"><label for="players">Number of Other Players</label></span>
+          <input class="settings-input" id="players" type="number" value="5" min="1">
+        </div>
+
+        <div class="settings-section">
+          <span class="settings-section-header"><label for="players-1">Other Player's Guesses</label></span>
+          <span id="players-container">
+            <span class="players">Player 1: <input class="settings-input" id="players-1" type="number" value="5"></span>
+            <span class="players">Player 2: <input class="settings-input" id="players-2" type="number" value="6"></span>
+            <span class="players">Player 3: <input class="settings-input" id="players-3" type="number" value="7"></span>
+            <span class="players">Player 4: <input class="settings-input" id="players-4" type="number" value="8"></span>
+            <span class="players">Player 5: <input class="settings-input" id="players-5" type="number" value="9"></span>
+          </span>
+        </div>
+
+        <button class="button" id="launch">Simulate</button>
+
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <noscript><span class="status error">JavaScript must be enabled to run the simulation.</span></noscript>
+    </div>
+
+  </div>
+
+</body>
 </html>
