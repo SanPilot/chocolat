@@ -39,7 +39,9 @@ onmessage = (e) => {
   // Sort and send the result
   postMessage({
     done: true,
-    results: results.sort((a, b) => {
+    results: results.filter((value) => {
+      return value !== undefined;
+    }).sort((a, b) => {
       return b[1] - a[1];
     }).slice(0, 50),
     time: Date.now() - timer

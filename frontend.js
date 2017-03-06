@@ -47,18 +47,14 @@ window.onload = () => {
 
   // Begin the simulation when the button is pressed
   var simulate = () => {
+    $("results").className = 'results';
+
+    // Pre-flight: ensure are values are valid
     var players = [], range = {
       min: +$("range-min").value,
       max: +$("range-max").value
     };
 
-    // If the simulation may take a long time, warn the user
-    if(range.max - range.min >= 20000) {
-      if(!confirm("The simulation you have selected may take a long time to complete.\nRun the simulation anyways?")) return;
-    }
-
-    $("results").className = 'results';
-    // Pre-flight: ensure are values are valid
     if(range.min >= range.max) {
       $("results").innerHTML = '<span class="status error">The provided range is invalid.</span>';
       return;
@@ -66,7 +62,10 @@ window.onload = () => {
     if(range.min % 1 !== 0 || range.max % 1 !== 0) {
       $("results").innerHTML = '<span class="status error">The range cannot include a decimal.</span>';
       return;
-
+    }
+    if(document.getElementsByClassName("players").length >= (range.max - range.min) + 1) {
+      $("results").innerHTML = '<span class="status error">There cannot be more than ' + (range.max - range.min) + ' other players.</span>';
+      return;
     }
     for(var i = 0; i < document.getElementsByClassName("players").length; i++) {
       var playerValue = +$("players-" + (i + 1)).value;
@@ -83,6 +82,11 @@ window.onload = () => {
     if(!window.Worker) {
       $("results").innerHTML = '<span class="status error">This simulation is not supported on your system!</span>';
       return;
+    }
+
+    // If the simulation may take a long time, warn the user
+    if(range.max - range.min >= 20000) {
+      if(!confirm("The simulation you have selected may take a long time to complete.\nRun the simulation anyways?")) return;
     }
 
     // Everything checks out, start the simulation!
