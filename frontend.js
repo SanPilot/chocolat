@@ -132,7 +132,7 @@ window.onload = () => {
         for(var i = 0; i < e.data.results.length; i++) {
           var appendElement = document.createElement("div");
           appendElement.className = "result";
-          appendElement.innerHTML = 'A guess of <b>' + e.data.results[i][0] + '</b> has a ' + ((e.data.results[i][1] / (range.max - range.min)) * 100).toFixed(1) + ' percent chance of winning.';
+          appendElement.innerHTML = 'A guess of <b>' + e.data.results[i][0] + '</b> has a ' + ((e.data.results[i][1] / (range.max - range.min + 1)) * 100).toFixed(1) + ' percent chance of winning.';
           resultsContainer.appendChild(appendElement);
         }
         $("results").appendChild(resultsContainer);

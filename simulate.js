@@ -5,7 +5,7 @@ onmessage = (e) => {
   range = e.data.range,
   players = e.data.players,
   last = 0,
-  calcs = Math.pow((range.max - range.min), 2),
+  calcs = Math.pow((range.max - range.min + 1), 2),
   reportAt = Math.round(calcs / 100),
   results = [],
   calc = 0;
@@ -17,7 +17,7 @@ onmessage = (e) => {
       var won = true,
       diff = Math.abs(actual - guess);
       for(var i = 0; i < players.length; i++) {
-        if(Math.abs(actual - players[i]) < diff) {
+        if(Math.abs(actual - players[i]) <= diff) {
           won = false;
           break;
         }
