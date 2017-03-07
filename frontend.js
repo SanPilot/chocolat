@@ -25,6 +25,7 @@ window.onload = () => {
 
   // Display the correct amount of player inputs
   $("players").onchange = () => {
+    if($("players").value <= 0) $("players").value = 1;
     var newVal = $("players").value,
     numPlayers = document.getElementsByClassName("players").length,
     diff = Math.abs(newVal - numPlayers);
