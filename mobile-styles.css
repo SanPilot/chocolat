@@ -1,0 +1,15 @@
+/* Styles for mobile devices */
+
+.container {
+  display: block;
+}
+
+.controls {
+  height: initial;
+  width: 100%;
+}
+
+.results {
+  height: initial;
+  width: 100%;
+}
